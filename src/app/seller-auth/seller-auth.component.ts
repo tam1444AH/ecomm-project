@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { SellerService } from '../services/seller.service';
-import { signUp } from '../data-type';
+import { signUp, Login } from '../data-type';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 @Component({
@@ -14,6 +14,7 @@ import { CommonModule } from '@angular/common';
 export class SellerAuthComponent {
 
   showLogin = false;
+  authError:string = '';
 
   ngOnInit(): void {
     this.seller.reloadSeller();
@@ -23,8 +24,14 @@ export class SellerAuthComponent {
     console.warn(data);
     this.seller.userSignUp(data);
   }
-  login(data: signUp): void {
+  login(data: Login): void {
     console.warn(data);
+    this.seller.userLogin(data);
+    this.seller.isLoginError.subscribe((isError) => {
+      if (isError) {
+        this.authError = 'Email or Password is incorrect';
+      }
+    })
   }
   
   openLogin() {
