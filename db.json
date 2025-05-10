@@ -1,0 +1,16 @@
+{
+  "seller": [
+    {
+      "id": "5cae",
+      "name": "Talha Mohammed",
+      "email": "test@gmail.com",
+      "password": "abc123"
+    },
+    {
+      "id": "fe97",
+      "name": "Aziz Mohammed",
+      "email": "test2@gmail.com",
+      "password": "abc1234"
+    }
+  ]
+}
