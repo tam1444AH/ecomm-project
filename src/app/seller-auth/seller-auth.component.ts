@@ -3,14 +3,18 @@ import { FormsModule } from '@angular/forms';
 import { SellerService } from '../services/seller.service';
 import { signUp } from '../data-type';
 import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-seller-auth',
-  imports: [FormsModule],
+  imports: [FormsModule, CommonModule],
   standalone: true,
   templateUrl: './seller-auth.component.html',
   styleUrl: './seller-auth.component.css'
 })
 export class SellerAuthComponent {
+
+  showLogin = false;
+
   ngOnInit(): void {
     this.seller.reloadSeller();
   }
@@ -18,5 +22,15 @@ export class SellerAuthComponent {
   signUp(data: signUp): void {
     console.warn(data);
     this.seller.userSignUp(data);
+  }
+  login(data: signUp): void {
+    console.warn(data);
+  }
+  
+  openLogin() {
+    this.showLogin = true;
+  }
+  openSignUp() {
+    this.showLogin = false;
   }
 }
