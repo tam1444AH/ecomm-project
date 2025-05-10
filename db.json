@@ -23,6 +23,24 @@
       "name": "Bruce",
       "password": "lol360123",
       "email": "bruce@gmail.com"
+    },
+    {
+      "id": "7a54",
+      "name": "tazz",
+      "password": "tazz",
+      "email": "tazz@gmail.com"
+    },
+    {
+      "id": "d74e",
+      "name": "sam",
+      "password": "sam",
+      "email": "sam@gmail.com"
+    },
+    {
+      "id": "b490",
+      "name": "oscar",
+      "password": "oscar",
+      "email": "oscar@test.com"
     }
   ]
 }
