@@ -2,16 +2,18 @@ import { Component } from '@angular/core';
 import { ProductService } from '../services/product.service';
 import { Product } from '../data-type';
 import { CommonModule } from '@angular/common';
-
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-seller-home',
-  imports: [CommonModule],
+  imports: [CommonModule, FontAwesomeModule],
   templateUrl: './seller-home.component.html',
   styleUrl: './seller-home.component.css',
 })
 export class SellerHomeComponent {
   productList: undefined | Product[];
   productMessage: undefined | string;
+  deleteIcon = faTrashCan;
 
   constructor(private product: ProductService) {}
   ngOnInit() {

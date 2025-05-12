@@ -45,15 +45,6 @@
   ],
   "products": [
     {
-      "id": "a1de",
-      "name": "car",
-      "price": "1000",
-      "category": "car",
-      "color": "black",
-      "description": "its a car",
-      "image": "https://media.architecturaldigest.com/photos/66a914f1a958d12e0cc94a8e/16:9/w_2992,h_1683,c_limit/DSC_5903.jpg"
-    },
-    {
       "id": "c9ff",
       "name": "hp laptop",
       "price": "1000",
