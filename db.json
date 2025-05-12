@@ -61,6 +61,24 @@
       "color": "black",
       "description": "dell laptop",
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoIgi2yMOgtMho9wPOKQnxGqqUwkQ0Lv215A&s"
+    },
+    {
+      "id": "f42f",
+      "name": "xbox 360",
+      "price": "100",
+      "category": "gaming",
+      "color": "green/black",
+      "description": "gaming console",
+      "image": "https://media.gamestop.com/i/gamestop/10114973/Microsoft-Xbox-360-E-Console?$pdp$"
+    },
+    {
+      "id": "76a3",
+      "name": "PS3",
+      "price": "144",
+      "category": "gaming console",
+      "color": "black",
+      "description": "gaming console",
+      "image": "https://m.media-amazon.com/images/I/61ZW9mk+epL.jpg"
     }
   ]
 }
