@@ -42,5 +42,34 @@
       "password": "oscar",
       "email": "oscar@test.com"
     }
+  ],
+  "products": [
+    {
+      "id": "4802",
+      "name": "iphone",
+      "price": "500",
+      "category": "phones",
+      "color": "blue",
+      "description": "this is apple phone",
+      "image": "http://apple.com"
+    },
+    {
+      "id": "a1de",
+      "name": "car",
+      "price": "1000",
+      "category": "car",
+      "color": "black",
+      "description": "its a car",
+      "image": "http://car.com"
+    },
+    {
+      "id": "0668",
+      "name": "cars",
+      "price": "1000",
+      "category": "cars",
+      "color": "blue",
+      "description": "cars",
+      "image": "httpcar"
+    }
   ]
 }
