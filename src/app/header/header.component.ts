@@ -40,13 +40,11 @@ export class HeaderComponent {
   searchProducts(query: KeyboardEvent) {
     if (query) {
       const element = query.target as HTMLInputElement;
-      console.warn(element.value);
       if (element.value.length > 0) {
         this.product.searchProducts(element.value).subscribe((result) => {
           if (result) {
-            console.warn(result);
             if (result.length > 5) {
-              result.length = length;
+              result.length = 5;
             }
             this.searchResult = result;
           }
@@ -60,5 +58,9 @@ export class HeaderComponent {
 
   hideSearch() {
     this.searchResult = undefined;
+  }
+
+  submitSearch(val: string) {
+    this.route.navigate(['/search', val]);
   }
 }
