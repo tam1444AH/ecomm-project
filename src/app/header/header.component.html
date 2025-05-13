@@ -11,7 +11,7 @@
         <button (click)="submitSearch(searchInput.value)">Search</button>
         <ul class="suggested-search" *ngIf="searchResult">
             <li *ngFor="let product of searchResult">
-                <a>{{ product.name }}</a>
+                <a (mousedown)="redirectToDetails(product.id)">{{ product.name }}</a>
             </li>
         </ul>
     </div>

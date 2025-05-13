@@ -8,7 +8,8 @@ import { Product } from '../data-type';
   selector: 'app-header',
   imports: [CommonModule],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.css'
+  styleUrl: './header.component.css',
+  standalone: true
 })
 export class HeaderComponent {
   menuType: string = 'default';
@@ -62,5 +63,9 @@ export class HeaderComponent {
 
   submitSearch(val: string) {
     this.route.navigate(['/search', val]);
+  }
+
+  redirectToDetails(id: string) {
+    this.route.navigate(['/details/' + id]);
   }
 }

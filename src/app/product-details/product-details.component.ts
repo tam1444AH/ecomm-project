@@ -13,6 +13,7 @@ import { Product } from '../data-type';
 export class ProductDetailsComponent {
   constructor(private activeRoute: ActivatedRoute, private product: ProductService) { }
   productData: Product | undefined;
+  productQuantity: number = 1;
   ngOnInit() {
     let id = this.activeRoute.snapshot.paramMap.get('id');
     if (id) {
@@ -21,6 +22,15 @@ export class ProductDetailsComponent {
           this.productData = result;
         }
       });
+    }
+  }
+
+  handleQuantity(val: string) {
+    if (this.productQuantity < 20 && val === 'plus') {
+      this.productQuantity += 1;
+    }
+    else if (this.productQuantity > 1 && val === 'min') {
+      this.productQuantity -= 1;
     }
   }
 }
