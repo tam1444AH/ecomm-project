@@ -13,6 +13,7 @@ import { CommonModule } from '@angular/common';
 })
 export class HomeComponent {
   popularProducts: Product[] | undefined;
+  trendyProducts: Product[] | undefined;
   images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
   constructor(private product: ProductService) { }
 
@@ -20,6 +21,11 @@ export class HomeComponent {
     this.product.popularProducts().subscribe((result) => {
       if (result) {
         this.popularProducts = result;
+      }
+    });
+    this.product.trendyProducts().subscribe((result) => {
+      if (result) {
+        this.trendyProducts = result;
       }
     });
   }
