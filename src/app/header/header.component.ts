@@ -14,6 +14,7 @@ import { Product } from '../data-type';
 export class HeaderComponent {
   menuType: string = 'default';
   sellerName: string = '';
+  userName: string = '';
   searchResult: Product[] | undefined;
   constructor(private route: Router, private product: ProductService) { }
   ngOnInit() {
@@ -26,6 +27,12 @@ export class HeaderComponent {
           this.menuType = 'seller';
           this.sellerName = sellerData.name;
         }
+        else if (localStorage.getItem('user')) {
+          this.menuType = 'user';
+          let userStore = localStorage.getItem('user');
+          let userData = userStore && JSON.parse(userStore);
+          this.userName = userData.name;
+        }
         else {
           this.menuType = 'default';
         }
@@ -35,7 +42,12 @@ export class HeaderComponent {
 
   logout() {
     localStorage.removeItem('seller');
-    this.route.navigate(['/']);
+    this.route.navigate(['/seller-auth']);
+  }
+
+  userLogout() {
+    localStorage.removeItem('user');
+    this.route.navigate(['/user-auth']);
   }
 
   searchProducts(query: KeyboardEvent) {

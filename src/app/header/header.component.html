@@ -28,5 +28,12 @@
             <li><a (click)="logout()">Logout</a></li>
             <li><a href="#">{{ sellerName | titlecase }}</a></li>
         </ul>
+        <ul *ngSwitchCase="'user'">
+            <li><a href="/seller-auth" routerLink="/seller-auth">Seller</a></li>
+            <li><a href="" routerLink="">Home</a></li>
+            <li><a (click)="userLogout()">Logout</a></li>
+            <li><a href="#">Cart(0)</a></li>
+            <li><a>{{ userName | titlecase }}</a></li>
+        </ul>
     </div>
 </nav>

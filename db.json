@@ -116,5 +116,25 @@
       "description": "test2",
       "image": ""
     }
+  ],
+  "users": [
+    {
+      "id": "657c",
+      "name": "peter",
+      "email": "peter@a.com",
+      "password": "peter"
+    },
+    {
+      "id": "29e3",
+      "name": "peter1",
+      "email": "peter1@gmail.com",
+      "password": "lol360"
+    },
+    {
+      "id": "f588",
+      "name": "tam",
+      "email": "tam@tam.com",
+      "password": "tam"
+    }
   ]
 }

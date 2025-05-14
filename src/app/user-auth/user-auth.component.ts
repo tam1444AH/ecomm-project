@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { signUp } from '../data-type';
+import { UserService } from '../services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-auth',
@@ -9,7 +11,13 @@ import { signUp } from '../data-type';
   styleUrl: './user-auth.component.css'
 })
 export class UserAuthComponent {
+  constructor(private user: UserService) { }
+
+  ngOnInit() {
+    this.user.userAuthReload();
+  }
+
   signUp(data: signUp) {
-    console.warn(data);
+    this.user.userSignUp(data);
   }
 }
