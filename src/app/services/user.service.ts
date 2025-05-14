@@ -14,15 +14,19 @@ export class UserService {
     this.http.post('http://localhost:3000/users', user, { observe: 'response' })
     .subscribe((result) => {
       if (result) {
-        localStorage.setItem('user', JSON.stringify(result.body));
-        this.router.navigate(['/']);
+        if (typeof window !== 'undefined') {
+          localStorage.setItem('user', JSON.stringify(result.body));
+          this.router.navigate(['/']);
+        }
       }
-    })  
+    });
   }
 
   userAuthReload() {
-    if (localStorage.getItem('user')) {
-      this.router.navigate(['/']);
+    if (typeof window !== 'undefined') {
+      if (localStorage.getItem('user')) {
+        this.router.navigate(['/']);
+      }
     }
   }
 }

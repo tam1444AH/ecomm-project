@@ -5,8 +5,10 @@ import { Observable } from 'rxjs';
 
 export const authGuard: CanActivateFn = (route, state): boolean | Observable<boolean>  => {
   const sellerService = inject(SellerService);
-  if (localStorage.getItem('seller')) {
-    return true;
+  if (typeof window !== 'undefined') {
+    if (localStorage.getItem('seller')) {
+      return true;
+    }
   }
   return sellerService.isSellerLoggedIn.asObservable();
 };

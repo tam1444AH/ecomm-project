@@ -88,33 +88,6 @@
       "color": "black",
       "description": "gaming console",
       "image": "data:image/jpeg;base64,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"
-    },
-    {
-      "id": "90e7",
-      "name": "test",
-      "price": "1000",
-      "category": "test",
-      "color": "test",
-      "description": "test",
-      "image": ""
-    },
-    {
-      "id": "d3b1",
-      "name": "test1",
-      "price": "1000",
-      "category": "test1",
-      "color": "test1",
-      "description": "test1",
-      "image": ""
-    },
-    {
-      "id": "3630",
-      "name": "test2",
-      "price": "1000",
-      "category": "test2",
-      "color": "test2",
-      "description": "test2",
-      "image": ""
     }
   ],
   "users": [
@@ -135,6 +108,24 @@
       "name": "tam",
       "email": "tam@tam.com",
       "password": "tam"
+    },
+    {
+      "id": "6788",
+      "name": "talha",
+      "email": "talha@gmail.com",
+      "password": "lol360"
+    },
+    {
+      "id": "e953",
+      "name": "ta",
+      "email": "ta@ta.com",
+      "password": "lol360"
+    },
+    {
+      "id": "9f31",
+      "name": "talha",
+      "email": "talha@tester.com",
+      "password": "lol360"
     }
   ]
 }

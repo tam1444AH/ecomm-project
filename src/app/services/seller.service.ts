@@ -16,16 +16,20 @@ export class SellerService {
   userSignUp(data: signUp){
     this.http.post('http://localhost:3000/seller', data, { observe: 'response' }).subscribe((result) => {
       if (result) {
-        localStorage.setItem('seller', JSON.stringify(result.body));
-        this.router.navigate(['seller-home']);
+        if (typeof window !== 'undefined') {
+          localStorage.setItem('seller', JSON.stringify(result.body));
+          this.router.navigate(['seller-home']);
+        }
       }
     })
   }
 
   reloadSeller() {
-    if (localStorage.getItem('seller')) {
-      this.isSellerLoggedIn.next(true);
-      this.router.navigate(['seller-home']);
+    if (typeof window !== 'undefined') {
+      if (localStorage.getItem('seller')) {
+        this.isSellerLoggedIn.next(true);
+        this.router.navigate(['seller-home']);
+      }
     }
   }
 
@@ -34,7 +38,9 @@ export class SellerService {
    .subscribe((result: any) => {
     if (result && result.body && result.body.length === 1) {
       this.isLoginError.emit(false);
-      localStorage.setItem('seller', JSON.stringify(result.body));
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('seller', JSON.stringify(result.body));
+      }
       this.router.navigate(['seller-home']);
     } else {
       console.warn('Login failed');
