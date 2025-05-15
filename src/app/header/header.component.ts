@@ -16,6 +16,7 @@ export class HeaderComponent {
   sellerName: string = '';
   userName: string = '';
   searchResult: Product[] | undefined;
+  cartItems: number = 0;
   constructor(private route: Router, private product: ProductService) { }
   ngOnInit() {
     this.route.events.subscribe((val: any) => {
@@ -40,6 +41,16 @@ export class HeaderComponent {
         }
       }
     });
+
+    if (typeof window !== 'undefined') {
+      let cartData = localStorage.getItem('localCart');
+      if (cartData) {
+        this.cartItems = JSON.parse(cartData).length;
+      }
+      this.product.cartData.subscribe((items) => {
+        this.cartItems = items.length;
+      });
+    }
   }
 
   logout() {

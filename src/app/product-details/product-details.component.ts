@@ -14,6 +14,7 @@ export class ProductDetailsComponent {
   constructor(private activeRoute: ActivatedRoute, private product: ProductService) { }
   productData: Product | undefined;
   productQuantity: number = 1;
+  removeCart = false;
   ngOnInit() {
     let id = this.activeRoute.snapshot.paramMap.get('id');
     if (id) {
@@ -22,6 +23,19 @@ export class ProductDetailsComponent {
           this.productData = result;
         }
       });
+    }
+    if (typeof window !== 'undefined') {
+      let cartData = localStorage.getItem('localCart');
+      if (id && cartData) {
+        let items = JSON.parse(cartData);
+        items = items.filter((item : Product) => id === item.id.toString());
+        if (items.length) {
+          this.removeCart = true;
+        }
+        else {
+          this.removeCart = false;
+        }
+      }
     }
   }
 
@@ -40,8 +54,16 @@ export class ProductDetailsComponent {
       if (typeof window !== 'undefined') {
         if (!localStorage.getItem('user')) {
           this.product.localAddToCart(this.productData);
+          this.removeCart = true;
         }
       }
+    }
+  }
+
+  removeFromCart(productId: string) {
+    if (this.productData && this.productData.id) {
+      this.product.removeItemFromCart(this.productData.id);
+      this.removeCart = false;
     }
   }
 }
