@@ -14,6 +14,7 @@ import { CommonModule } from '@angular/common';
 export class UserAuthComponent {
   constructor(private user: UserService) { }
   showLogin : boolean = false;
+  authError: string = "";
 
   ngOnInit() {
     this.user.userAuthReload();
@@ -25,6 +26,11 @@ export class UserAuthComponent {
 
   login(data: Login) {
     this.user.userLogin(data);
+    this.user.invalidUserAuth.subscribe((result) => {
+      if (result) {
+        this.authError = "Email or Password is incorrect";
+      }
+    })
   }
 
   openLogin() {
