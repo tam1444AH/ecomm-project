@@ -33,4 +33,15 @@ export class ProductDetailsComponent {
       this.productQuantity -= 1;
     }
   }
+
+  addToCart() {
+    if (this.productData) {
+      this.productData.quantity = this.productQuantity;
+      if (typeof window !== 'undefined') {
+        if (!localStorage.getItem('user')) {
+          this.product.localAddToCart(this.productData);
+        }
+      }
+    }
+  }
 }

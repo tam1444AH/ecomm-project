@@ -39,4 +39,25 @@ export class ProductService {
   searchProducts(query: string) {
     return this.http.get<Product[]>('http://localhost:3000/products?q=' + query);
   }
+
+  localAddToCart(data: Product) {
+    let cartData = [];
+    let localCart;
+    if (typeof window !== 'undefined') {
+      localCart = localStorage.getItem('localCart');
+    }
+
+    if (!localCart) {
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('localCart', JSON.stringify([data]));
+      }
+    } else {
+      console.warn('You already have data.');
+      cartData = JSON.parse(localCart);
+      cartData.push(data);
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('localCart', JSON.stringify(cartData));
+      }
+    }
+  }
 }
