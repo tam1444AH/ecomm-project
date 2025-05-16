@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Login, signUp } from '../data-type';
+import { Cart, Login, Product, signUp } from '../data-type';
 import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { ProductService } from '../services/product.service';
 
 @Component({
   selector: 'app-user-auth',
@@ -12,7 +13,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './user-auth.component.css'
 })
 export class UserAuthComponent {
-  constructor(private user: UserService) { }
+  constructor(private user: UserService, private product: ProductService) { }
   showLogin : boolean = false;
   authError: string = "";
 
@@ -30,6 +31,9 @@ export class UserAuthComponent {
       if (result) {
         this.authError = "Email or Password is incorrect";
       }
+      else {
+        this.localCartToRemoteCart();
+      }
     })
   }
 
@@ -39,5 +43,34 @@ export class UserAuthComponent {
 
   openSignUp() {
     this.showLogin = false;
+  }
+
+  localCartToRemoteCart() {
+    if (typeof window !== 'undefined') {
+      let data = localStorage.getItem('localCart');
+      if (data) {
+        let cartDataList: Product[] = JSON.parse(data);
+        let user = localStorage.getItem('user');
+        let userId = user && JSON.parse(user).id;
+        cartDataList.forEach((product: Product, index: number) => {
+          let cartData: Cart = {
+            ...product,
+            productId: product.id,
+            userId,
+          }
+          delete cartData.id;
+          setTimeout(() => {
+            this.product.addToCart(cartData).subscribe((result) => {
+              if (result) {
+                console.warn("local cart converted to remote cart", result);
+              }
+            })
+          }, 500);
+          if (cartDataList.length === index + 1) {
+            localStorage.removeItem('localCart');
+          }
+        })
+      }
+    }
   }
 }

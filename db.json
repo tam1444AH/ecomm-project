@@ -152,6 +152,66 @@
       "quantity": 5,
       "userId": "9f31",
       "productId": "f25a"
+    },
+    {
+      "id": "fc1f",
+      "name": "hp laptop, BEING deleted soon",
+      "price": "7000",
+      "category": "laptop",
+      "color": "green/black",
+      "description": "its a laptop, thats being deleted",
+      "image": "https://m.media-amazon.com/images/I/51fXuiChdJL.jpg",
+      "quantity": 1,
+      "productId": "c9ff",
+      "userId": "6788"
+    },
+    {
+      "id": "e262",
+      "name": "dell laptop",
+      "price": "1000",
+      "category": "laptop",
+      "color": "black",
+      "description": "dell laptop",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoIgi2yMOgtMho9wPOKQnxGqqUwkQ0Lv215A&s",
+      "quantity": 6,
+      "productId": "f25a",
+      "userId": "6788"
+    },
+    {
+      "id": "d746",
+      "name": "hp laptop, BEING deleted soon",
+      "price": "7000",
+      "category": "laptop",
+      "color": "green/black",
+      "description": "its a laptop, thats being deleted",
+      "image": "https://m.media-amazon.com/images/I/51fXuiChdJL.jpg",
+      "quantity": 1,
+      "userId": "6788",
+      "productId": "c9ff"
+    },
+    {
+      "id": "7d1b",
+      "name": "hp laptop, BEING deleted soon",
+      "price": "7000",
+      "category": "laptop",
+      "color": "green/black",
+      "description": "its a laptop, thats being deleted",
+      "image": "https://m.media-amazon.com/images/I/51fXuiChdJL.jpg",
+      "quantity": 1,
+      "productId": "c9ff",
+      "userId": "6788"
+    },
+    {
+      "id": "c65d",
+      "name": "PS3",
+      "price": "144",
+      "category": "gaming console",
+      "color": "black",
+      "description": "gaming console",
+      "image": "https://m.media-amazon.com/images/I/61ZW9mk+epL.jpg",
+      "quantity": 1,
+      "productId": "76a3",
+      "userId": "6788"
     }
   ]
 }
