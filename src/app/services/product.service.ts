@@ -1,5 +1,5 @@
 import { EventEmitter, Injectable } from '@angular/core';
-import { Product } from '../data-type';
+import { Cart, Product } from '../data-type';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -77,5 +77,9 @@ export class ProductService {
       }
       this.cartData.emit(items);
     }
+  }
+  
+  addToCart(cartData: Cart) {
+    return this.http.post('http://localhost:3000/cart', cartData);
   }
 }
