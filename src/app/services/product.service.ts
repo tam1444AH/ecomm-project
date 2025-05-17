@@ -52,6 +52,7 @@ export class ProductService {
     if (!localCart) {
       if (typeof window !== 'undefined') {
         localStorage.setItem('localCart', JSON.stringify([data]));
+        this.cartData.emit([data]);
       }
     } else {
       console.warn('You already have data.');
@@ -82,4 +83,19 @@ export class ProductService {
   addToCart(cartData: Cart) {
     return this.http.post('http://localhost:3000/cart', cartData);
   }
+
+  getCartList(userId: string) {
+    return this.http.get<Product[]>(`http://localhost:3000/cart?userId=${userId}`, {
+      observe: 'response',
+    }).subscribe((result) => {
+      if (result && result.body) {
+        this.cartData.emit(result.body);
+      }
+    });
+  }
+
+  removeCartItem(cartId: string) {
+    return this.http.delete('http://localhost:3000/cart/' + cartId);
+  }
+
 }

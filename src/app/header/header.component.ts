@@ -34,6 +34,7 @@ export class HeaderComponent {
             let userStore = localStorage.getItem('user');
             let userData = userStore && JSON.parse(userStore);
             this.userName = userData.name;
+            this.product.getCartList(userData.id);
           }
           else {
             this.menuType = 'default';
@@ -64,6 +65,7 @@ export class HeaderComponent {
     if (typeof window !== 'undefined') {
       localStorage.removeItem('user');
       this.route.navigate(['/user-auth']);
+      this.product.cartData.emit([]);
     }
   }
 

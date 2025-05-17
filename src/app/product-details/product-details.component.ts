@@ -15,6 +15,7 @@ export class ProductDetailsComponent {
   productData: Product | undefined;
   productQuantity: number = 1;
   removeCart = false;
+  cartData: Product | undefined;
   ngOnInit() {
     let id = this.activeRoute.snapshot.paramMap.get('id');
     if (id) {
@@ -36,6 +37,25 @@ export class ProductDetailsComponent {
           this.removeCart = false;
         }
       }
+    }
+    if (typeof window !== 'undefined') {
+      let user = localStorage.getItem('user');
+      let userId = user && JSON.parse(user).id;
+      if (userId) {
+        this.product.getCartList(userId);
+
+        this.product.cartData.subscribe((result) => {
+          let item = result.filter((item: Product) => id === item.productId);
+          if (item.length) {
+            this.removeCart = true;
+            this.cartData = item[0];
+          }
+          else {
+            this.removeCart = false;
+          }
+        })
+      }
+
     }
   }
 
@@ -68,6 +88,8 @@ export class ProductDetailsComponent {
           this.product.addToCart(cartData).subscribe((result) => {
             if (result) {
               alert('Item added to cart');
+              this.product.getCartList(userId);
+              this.removeCart = true;
             }
           });
         }
@@ -76,9 +98,21 @@ export class ProductDetailsComponent {
   }
 
   removeFromCart(productId: string) {
-    if (this.productData && this.productData.id) {
-      this.product.removeItemFromCart(this.productData.id);
-      this.removeCart = false;
+    if (typeof window !== 'undefined') {
+      let user = localStorage.getItem('user');
+      let userId = user && JSON.parse(user).id;
+      if (!user && this.productData && this.productData.id) {
+        this.product.removeItemFromCart(this.productData.id);
+        this.removeCart = false;
+      }
+      else {
+        console.log(this.cartData);
+        this.cartData && this.product.removeCartItem(this.cartData.id).subscribe((result) => {
+          this.product.getCartList(userId);
+        })
+        this.removeCart = false;
+      }
     }
+
   }
 }
