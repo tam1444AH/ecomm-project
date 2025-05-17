@@ -1,5 +1,5 @@
 import { EventEmitter, Injectable } from '@angular/core';
-import { Cart, Product } from '../data-type';
+import { Cart, Order, Product } from '../data-type';
 import { HttpClient } from '@angular/common/http';
 import { of, Observable } from 'rxjs';
 
@@ -113,6 +113,10 @@ export class ProductService {
     } else {
       return of([]);
     }
+  }
+
+  orderNow(data: Order) {
+    return this.http.post('http://localhost:3000/orders', data);
   }
 
 }
