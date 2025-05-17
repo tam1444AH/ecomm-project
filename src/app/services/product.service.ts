@@ -1,6 +1,7 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { Cart, Product } from '../data-type';
 import { HttpClient } from '@angular/common/http';
+import { of, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -96,6 +97,22 @@ export class ProductService {
 
   removeCartItem(cartId: string) {
     return this.http.delete('http://localhost:3000/cart/' + cartId);
+  }
+
+  currentCart() : Observable<Cart[]> {
+    const raw = 
+      typeof window !== 'undefined'
+        ? localStorage.getItem('user')
+        : null;
+    const user = raw ? JSON.parse(raw) : null;
+
+    if (user && user.id) {
+      return this.http.get<Cart[]>(
+        `http://localhost:3000/cart?userId=${user.id}`
+      );
+    } else {
+      return of([]);
+    }
   }
 
 }
