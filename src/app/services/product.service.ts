@@ -119,4 +119,30 @@ export class ProductService {
     return this.http.post('http://localhost:3000/orders', data);
   }
 
+  orderList() : Observable<Order[]> {
+    const raw = 
+      typeof window !== 'undefined'
+        ? localStorage.getItem('user')
+        : null;
+    const user = raw ? JSON.parse(raw) : null;
+
+    if (user && user.id) {
+      return this.http.get<Order[]>(
+        `http://localhost:3000/orders?userId=${user.id}`
+      );
+    } else {
+      return of([]);
+    }
+  }
+
+  deleteCartItems(cartId: string) {
+    return this.http.delete('http://localhost:3000/cart/' + cartId).subscribe((result) => {
+      this.cartData.emit([]);
+    });
+  }
+
+  cancelOrder(orderId: string) {
+    return this.http.delete('http://localhost:3000/orders/' + orderId);
+  }
+
 }
