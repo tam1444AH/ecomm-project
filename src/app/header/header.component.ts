@@ -3,10 +3,11 @@ import { Component } from '@angular/core';
 import  { Router } from '@angular/router';
 import { ProductService } from '../services/product.service';
 import { Product } from '../data-type';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-header',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
   standalone: true
